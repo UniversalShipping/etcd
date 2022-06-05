@@ -41,10 +41,10 @@ jobs:
           echo "${TARGET}"
           case "${TARGET}" in
             linux-amd64)
-              GOARCH=amd64 PASSES='build' ./scripts/test.sh
+              GOARCH=amd64 PASSES='build' ./test.sh
               ;;
             linux-386)
-              GOARCH=386 PASSES='build' ./scripts/test.sh
+              GOARCH=386 PASSES='build' ./test.sh
               ;;
             darwin-amd64)
               GOARCH=amd64 GOOS=darwin GO_BUILD_FLAGS='-v -mod=readonly' ./build.sh
