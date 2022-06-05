@@ -74,9 +74,17 @@ jobs:
           esac
           tar -czvf etcd-binaries-"${TARGET}".tar.gz bin/
           
-      - name: Archive ${{ matrix.target }}
-        uses: actions/upload-artifact@v3
+      # - name: Archive ${{ matrix.target }}
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: etcd-binaries-${{ matrix.target }}.tar.gz
+      #     path: etcd-binaries-${{ matrix.target }}.tar.gz
+      #     retention-days: 14
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
         with:
-          name: etcd-binaries-${{ matrix.target }}.tar.gz
-          path: etcd-binaries-${{ matrix.target }}.tar.gz
-          retention-days: 14
+          files: |
+            etcd-binaries-${{ matrix.target }}.tar.gz
+            LICENSE
