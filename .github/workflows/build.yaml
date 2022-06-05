@@ -30,7 +30,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          repository: 'https://github.com/etcd-io/etcd.git'
+          repository: 'etcd-io/etcd'
           ref: ${{ github.event.inputs.tag != '' && github.event.inputs.tag || github.ref_name }}
       - uses: actions/setup-go@v2
         with:
